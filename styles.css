@@ -1,0 +1,333 @@
+/* latin-ext */
+
+@font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Montserrat Regular'), local('Montserrat-Regular'), url(https://fonts.gstatic.com/s/montserrat/v12/JTUSjIg1_i6t8kCHKm459Wdhyzbi.woff2) format('woff2');
+    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* latin */
+
+@font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Montserrat Regular'), local('Montserrat-Regular'), url(https://fonts.gstatic.com/s/montserrat/v12/JTUSjIg1_i6t8kCHKm459Wlhyw.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* latin-ext */
+
+@font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    src: local('Montserrat Bold'), local('Montserrat-Bold'), url(https://fonts.gstatic.com/s/montserrat/v12/JTURjIg1_i6t8kCHKm45_dJE3gfD_u50.woff2) format('woff2');
+    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* latin */
+
+@font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    src: local('Montserrat Bold'), local('Montserrat-Bold'), url(https://fonts.gstatic.com/s/montserrat/v12/JTURjIg1_i6t8kCHKm45_dJE3gnD_g.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+*,
+::after,
+::before {
+    position: relative;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    color: #555;
+    --gradient: linear-gradient(to top right, #fbc2eb 0%, #a6c1ee 100%);
+}
+*:focus {
+    outline: none;
+}
+
+
+#wrapper {
+    display: flex;
+    width: 100%;
+    min-height: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 5em 0;
+    position: static;
+}
+
+#maininput {
+    padding: .5em 2em;
+    border: none;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    font-size: .9em;
+    font-weight: bold;
+    text-transform: uppercase;
+    background: transparent;
+}
+form {
+    box-shadow: 0 0 0 1px #00000022;
+    border-radius: 100px;
+    display: flex;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    background: #fff;
+    overflow: hidden;
+}
+
+div[data-button-action="submit"] {
+    align-self: stretch;
+    border-radius: 100px 0 0 100px;
+    background-image: var(--gradient);
+    width: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    transition: width .3s ease;
+}
+
+#maininput:not(:placeholder-shown) + div[data-button-action="submit"] {
+    width: 4em;
+}
+#mainContainer.lostFocus div[data-button-action="submit"] {
+    width: 0;
+}
+
+span.placeholder {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    font-size: 0.75em;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    white-space: nowrap;
+    transform: translate(calc(-50% + 0.2em),-50%);
+    opacity: .5;
+    pointer-events: none;
+    transition: opacity .3s ease,transform .3s ease;
+}
+
+#maininput:not(:placeholder-shown) ~ span.placeholder {
+    opacity: 0;
+    transform: translate(calc(-50% + 0.2em - 2em),-50%);
+}
+
+div[data-button-action="submit"] svg {
+    height: 2em;
+    max-height: 1em;
+    width: 2em;
+    max-width: 1em;
+}
+
+#recommended {
+    position: absolute;
+    width: 100%;
+    background: whitesmoke;
+    left: 0;
+    top: 0;
+    border-radius: 1em;
+    padding: 2.25em 0 0;
+    transition: opacity .3s ease;
+}
+
+#mainContainer {
+    max-width: 600px;
+    min-width: 200px;
+    width: 70vw;
+    z-index: 2;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: transform .8s ease, opacity .4s ease;
+}
+
+#recommended > div {
+    display: flex;
+    align-items: center;
+    padding: 0.75em 1em;
+}
+
+#recommended div > span {
+    font-size: .75em;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    pointer-events: none;
+}
+#recommended span.reccommended-productName {
+    flex-grow: 1;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+#recommended span.reccommended-ID {
+    margin-left: 2em;
+    opacity: 0.5;
+}
+#recommended span.reccommended-ID::before {
+    content: "#";
+}
+
+#mainContainer.lostFocus #recommended,
+#recommended.recommended-empty {
+    opacity: 0;
+    pointer-events: none;
+}
+
+@keyframes enterIn {
+    from {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+}
+
+#recommended > div:nth-child(1) {
+    animation: enterIn .3s ease 0s backwards;
+}
+#recommended > div:nth-child(2) {
+    animation: enterIn .3s ease 0.05s backwards;
+}
+#recommended > div:nth-child(3) {
+    animation: enterIn .3s ease 0.1s backwards;
+}
+#recommended > div:nth-child(4) {
+    animation: enterIn .3s ease 0.15s backwards;
+}
+#recommended > div:nth-child(5) {
+    animation: enterIn .3s ease 0.2s backwards;
+}
+#recommended > div:nth-child(6) {
+    animation: enterIn .3s ease 0.25s backwards;
+}
+#recommended > div:nth-child(7) {
+    animation: enterIn .3s ease 0.3s backwards;
+}
+#recommended > div:nth-child(8) {
+    animation: enterIn .3s ease 0.35s backwards;
+}
+
+.resultCard {
+    width: 100%;
+    padding: 1.5em;
+    border-radius: 1em;
+    margin: .5em 0;
+    background-image: var(--gradient);
+    display: flex;
+    align-items: center;
+    animation: enterIn .3s ease .9s backwards;
+    transition: transform .4s ease, opacity .4s ease, box-shadow .4s ease;
+    min-height: 4em;
+    box-shadow: 0 0 2em 0px #00000000;
+}
+
+.resultCard > span {
+    color: #fff;
+    font-size: .75em;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    pointer-events: none;
+}
+
+.resultCard span.resultCard-productName {
+    flex-grow: 1;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.resultCard span.resultCard-ID {
+    margin-left: 2em;
+    opacity: 0.75;
+    font-size: 1em;
+}
+.resultCard span.resultCard-ID::before {
+    content: "#";
+    color: #fff;
+}
+#results {
+    max-width: 600px;
+    min-width: 200px;
+    width: 70vw;
+}
+
+span.selected-match::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.7;
+    background-image: var(--gradient);
+    z-index: -1;
+    border-radius: 4px;
+    padding: 0 5px;
+}
+span.selected-match {
+    z-index: 1;
+}
+
+.resultCard--enlarged {
+    transform: scale(1.2);
+    z-index: 5;
+    box-shadow: 0 0 2em 0px #00000055;
+}
+
+#wrapper.hasEnlarged #mainContainer,
+#wrapper.hasEnlarged #results > div.resultCard:not(.resultCard--enlarged) {
+    /*filter: blur(5px);*/
+    pointer-events: none;
+    opacity: 0.3;
+}
+
+
+
+
+
+div#goBackUp {
+    position: fixed;
+    height: 3.5em;
+    width: 3.5em;
+    background: var(--gradient);
+    z-index: 30;
+    right: 1em;
+    bottom: 1em;
+    border-radius: 50%;
+    transition: transform .4s ease;
+    box-shadow: 0px 0.25em 1em 0 #00000055;
+}
+
+div#goBackUp svg { 
+    width: 100%;
+    height: 100%;
+    max-height: 40%;
+    max-width: 40%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+div#goBackUp.goBackUp--hidden {
+    transform: translate3d(0,5em,0);
+}
